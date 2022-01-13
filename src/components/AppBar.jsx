@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 import theme from '../theme.js';
+import AppBarTab from './AppBarTab.jsx';
 
 const styles = StyleSheet.create({
 	container: {
@@ -10,19 +11,23 @@ const styles = StyleSheet.create({
 		backgroundColor: theme.colors.primary,
 		opacity: 0.95,
 	},
-	text: {
-		fontWeight: 'bold',
-		color: '#fff',
+	tabContainer: {
 		paddingTop: 20,
 		paddingLeft: 10,
 		paddingBottom: 15,
+	},
+	text: {
+		fontWeight: 'bold',
+		color: '#fff',
 	},
 });
 
 const AppBar = () => {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.text}>Repositories</Text>
+			<View style={styles.tabContainer}>
+				<AppBarTab text={styles.text} />
+			</View>
 		</View>
 	);
 };
