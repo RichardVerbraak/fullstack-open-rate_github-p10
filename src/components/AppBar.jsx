@@ -2,10 +2,12 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import Constants from 'expo-constants';
 
+import theme from '../theme.js';
+
 const styles = StyleSheet.create({
 	container: {
 		paddingTop: Constants.statusBarHeight,
-		backgroundColor: '#24292e',
+		backgroundColor: theme.colors.primary,
 		opacity: 0.95,
 	},
 	text: {
