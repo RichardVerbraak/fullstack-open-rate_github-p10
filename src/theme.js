@@ -1,3 +1,5 @@
+// Our "Global styles" to pull from (think Sass Variables)
+
 const theme = {
 	colors: {
 		textPrimary: '#24292e',
