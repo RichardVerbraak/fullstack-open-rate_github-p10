@@ -6,14 +6,28 @@ import Text from './Text';
 const styles = StyleSheet.create({
 	itemContainer: {
 		backgroundColor: '#fff',
-	},
-	image: {
-		width: 50,
-		height: 50,
-		borderRadius: 5,
+		height: 175,
 	},
 
 	mainContainer: {
+		display: 'flex',
+		flexDirection: 'row',
+
+		paddingTop: 10,
+		paddingLeft: 10,
+	},
+
+	imageContainer: {
+		paddingRight: 15,
+	},
+
+	image: {
+		borderRadius: 5,
+		width: 50,
+		height: 50,
+	},
+
+	textContainer: {
 		display: 'flex',
 	},
 
@@ -42,12 +56,16 @@ const RepositoryItem = ({ item }) => {
 
 	return (
 		<View style={styles.itemContainer}>
-			<Image style={styles.image} source={{ uri: ownerAvatarUrl }} />
-
 			<View style={styles.mainContainer}>
-				<Text style={styles.fullName}>Full name: {fullName}</Text>
-				<Text>Description: {description}</Text>
-				<Text>Language: {language}</Text>
+				<View style={styles.imageContainer}>
+					<Image style={styles.image} source={{ uri: ownerAvatarUrl }} />
+				</View>
+
+				<View style={styles.textContainer}>
+					<Text style={styles.fullName}>{fullName}</Text>
+					<Text>{description}</Text>
+					<Text>{language}</Text>
+				</View>
 			</View>
 
 			<View style={styles.subContainer}>
