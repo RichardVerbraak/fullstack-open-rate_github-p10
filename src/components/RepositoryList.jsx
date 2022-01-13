@@ -57,6 +57,10 @@ const repositories = [
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
+// Can also be done with .map but FlatList has "built-in" lazy loading
+// Good rule of thumb is to use FlatList when the list of items are larger than the screen (better for performance)
+// tips for FlatList performance https://github.com/filipemerker/flatlist-performance-tips
+
 const RepositoryList = () => {
 	return (
 		<FlatList
