@@ -55,6 +55,7 @@ const repositories = [
 	},
 ];
 
+// Renders a view in between every item in the flatlist
 const ItemSeparator = () => <View style={styles.separator} />;
 
 // Can also be done with .map but FlatList has "built-in" lazy loading

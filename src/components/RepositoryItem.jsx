@@ -6,6 +6,8 @@ import Text from './Text';
 
 const styles = StyleSheet.create({
 	itemContainer: {
+		display: 'flex',
+		justifyContent: 'space-around',
 		backgroundColor: '#fff',
 		height: 175,
 	},
@@ -14,8 +16,7 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		flexDirection: 'row',
 
-		paddingTop: 10,
-		paddingLeft: 10,
+		paddingLeft: 20,
 	},
 
 	imageContainer: {
@@ -32,13 +33,21 @@ const styles = StyleSheet.create({
 		display: 'flex',
 	},
 
+	description: {
+		color: theme.colors.textSecondary,
+	},
+
 	subContainer: {
 		display: 'flex',
 		flexDirection: 'row',
-		margin: 'auto',
-		maxWidth: '80%',
-		alignContent: 'center',
+		marginLeft: 'auto',
+		marginRight: 'auto',
+		width: 275,
 		justifyContent: 'space-between',
+	},
+
+	countContainer: {
+		display: 'flex',
 	},
 
 	fullName: {
@@ -49,6 +58,7 @@ const styles = StyleSheet.create({
 	language: {
 		backgroundColor: theme.colors.secondary,
 		color: '#fff',
+		borderRadius: 5,
 	},
 });
 
@@ -73,28 +83,30 @@ const RepositoryItem = ({ item }) => {
 
 				<View style={styles.textContainer}>
 					<Text style={styles.fullName}>{fullName}</Text>
-					<Text>{description}</Text>
-					<Text style={styles.language}>{language}</Text>
+					<Text color={'textSecondary'}>{description}</Text>
+					<Text fontWeight={'bold'} style={styles.language}>
+						{language}
+					</Text>
 				</View>
 			</View>
 
 			<View style={styles.subContainer}>
-				<View>
+				<View style={styles.countContainer}>
 					<Text fontWeight={'bold'}>{stargazersCount}</Text>
 					<Text color={'textSecondary'}>Stars</Text>
 				</View>
 
-				<View>
+				<View style={styles.countContainer}>
 					<Text fontWeight={'bold'}>{forksCount}</Text>
 					<Text color={'textSecondary'}>Forks</Text>
 				</View>
 
-				<View>
+				<View style={styles.countContainer}>
 					<Text fontWeight={'bold'}>{reviewCount}</Text>
 					<Text color={'textSecondary'}>Reviews</Text>
 				</View>
 
-				<View>
+				<View style={styles.countContainer}>
 					<Text fontWeight={'bold'}>{ratingAverage}</Text>
 					<Text color={'textSecondary'}>Rating</Text>
 				</View>

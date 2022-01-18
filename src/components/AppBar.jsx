@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 	},
 	tabContainer: {
 		paddingTop: 20,
-		paddingLeft: 10,
+		paddingLeft: 20,
 		paddingBottom: 15,
 	},
 	text: {
