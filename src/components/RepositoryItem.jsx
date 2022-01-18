@@ -92,12 +92,16 @@ const RepositoryItem = ({ item }) => {
 
 			<View style={styles.subContainer}>
 				<View style={styles.countContainer}>
-					<Text fontWeight={'bold'}>{stargazersCount}</Text>
+					<Text fontWeight={'bold'}>{`${
+						Math.round(stargazersCount / 100) / 10
+					}k`}</Text>
 					<Text color={'textSecondary'}>Stars</Text>
 				</View>
 
 				<View style={styles.countContainer}>
-					<Text fontWeight={'bold'}>{forksCount}</Text>
+					<Text fontWeight={'bold'}>{`${
+						Math.round(forksCount / 100) / 10
+					}k`}</Text>
 					<Text color={'textSecondary'}>Forks</Text>
 				</View>
 
