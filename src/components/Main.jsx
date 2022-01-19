@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { Route, Routes, Navigate, Navigate } from 'react-router-native';
+
 import AppBar from './AppBar';
 import RepositoryList from './RepositoryList';
 
@@ -15,6 +17,11 @@ const Main = () => {
 	return (
 		<View style={styles.container}>
 			<AppBar />
+
+			<Routes>
+				<Route path='/' element={<RepositoryList />} exact />
+				<Route path='*' element={<Navigate to='/' replace />} />
+			</Routes>
 			<RepositoryList />
 		</View>
 	);
