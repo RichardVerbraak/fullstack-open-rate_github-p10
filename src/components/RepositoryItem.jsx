@@ -7,14 +7,15 @@ import Text from './Text';
 const styles = StyleSheet.create({
 	itemContainer: {
 		display: 'flex',
-		justifyContent: 'space-around',
 		backgroundColor: '#fff',
-		height: 175,
+
+		paddingTop: 15,
 	},
 
 	mainContainer: {
 		display: 'flex',
 		flexDirection: 'row',
+		alignContent: 'space-between',
 
 		paddingLeft: 20,
 	},
@@ -24,26 +25,35 @@ const styles = StyleSheet.create({
 	},
 
 	image: {
-		borderRadius: 5,
 		width: 50,
 		height: 50,
+		borderRadius: 5,
 	},
 
 	textContainer: {
 		display: 'flex',
+		flex: 1,
 	},
 
 	description: {
 		color: theme.colors.textSecondary,
+		paddingTop: 5,
+		paddingBottom: 5,
 	},
 
 	subContainer: {
 		display: 'flex',
 		flexDirection: 'row',
+		width: 275,
+
 		marginLeft: 'auto',
 		marginRight: 'auto',
-		width: 275,
+
 		justifyContent: 'space-between',
+
+		// Could do this with space-around/evenly in the itemContainer as well?
+		paddingTop: 20,
+		paddingBottom: 15,
 	},
 
 	countContainer: {
@@ -53,17 +63,16 @@ const styles = StyleSheet.create({
 	fullName: {
 		color: '#000',
 		fontWeight: '700',
-		marginBottom: 7,
 	},
 
 	language: {
 		// Aligns the content to the left side of the container and having the text be as big as it content instead of spanning the entire containers width
 		alignSelf: 'flex-start',
+
 		backgroundColor: theme.colors.secondary,
 		color: '#fff',
 		borderRadius: 5,
-		marginTop: 7,
-		padding: 5,
+		padding: 7,
 	},
 });
 
@@ -88,7 +97,9 @@ const RepositoryItem = ({ item }) => {
 
 				<View style={styles.textContainer}>
 					<Text style={styles.fullName}>{fullName}</Text>
-					<Text color={'textSecondary'}>{description}</Text>
+					<Text color={'textSecondary'} style={styles.description}>
+						{description}
+					</Text>
 					<Text fontWeight={'bold'} style={styles.language}>
 						{language}
 					</Text>
