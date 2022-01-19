@@ -14,10 +14,9 @@ const styles = StyleSheet.create({
 	tabContainer: {
 		display: 'flex',
 		flexDirection: 'row',
-		justifyContent: 'space-around',
+		justifyContent: 'space-evenly',
 
 		paddingTop: 20,
-		paddingLeft: 20,
 		paddingBottom: 15,
 	},
 	text: {
@@ -30,7 +29,8 @@ const AppBar = () => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.tabContainer}>
-				<AppBarTab title={'Repositories'} text={styles.text} />
+				<AppBarTab title={'Repositories'} url={'/'} text={styles.text} />
+				<AppBarTab title={'Sign In'} url={'/login'} text={styles.text} />
 			</View>
 		</View>
 	);
