@@ -1,10 +1,10 @@
 import React from 'react';
 import { Pressable, Text } from 'react-native';
 
-const AppBarTab = ({ text }) => {
+const AppBarTab = ({ text, title }) => {
 	return (
 		<Pressable>
-			<Text style={text}>Repositories</Text>
+			<Text style={text}>{title}</Text>
 		</Pressable>
 	);
 };

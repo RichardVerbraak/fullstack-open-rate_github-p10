@@ -12,6 +12,10 @@ const styles = StyleSheet.create({
 		opacity: 0.95,
 	},
 	tabContainer: {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-around',
+
 		paddingTop: 20,
 		paddingLeft: 20,
 		paddingBottom: 15,
@@ -26,7 +30,7 @@ const AppBar = () => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.tabContainer}>
-				<AppBarTab text={styles.text} />
+				<AppBarTab title={'Repositories'} text={styles.text} />
 			</View>
 		</View>
 	);
