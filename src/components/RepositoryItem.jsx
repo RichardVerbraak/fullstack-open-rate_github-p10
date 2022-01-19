@@ -53,12 +53,17 @@ const styles = StyleSheet.create({
 	fullName: {
 		color: '#000',
 		fontWeight: '700',
+		marginBottom: 7,
 	},
 
 	language: {
+		// Aligns the content to the left side of the container and having the text be as big as it content instead of spanning the entire containers width
+		alignSelf: 'flex-start',
 		backgroundColor: theme.colors.secondary,
 		color: '#fff',
 		borderRadius: 5,
+		marginTop: 7,
+		padding: 5,
 	},
 });
 
