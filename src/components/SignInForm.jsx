@@ -7,12 +7,14 @@ import theme from '../theme';
 const styles = StyleSheet.create({
 	formContainer: {
 		display: 'flex',
-		justifyContent: 'space-evenly',
+		justifyContent: 'space-between',
 
 		height: '40%',
 		width: '90%',
+
 		marginLeft: 'auto',
 		marginRight: 'auto',
+		padding: 20,
 	},
 
 	input: {
@@ -23,6 +25,7 @@ const styles = StyleSheet.create({
 		borderWidth: 0.5,
 		borderRadius: 5,
 	},
+
 	signIn: {
 		backgroundColor: theme.colors.secondary,
 		color: '#fff',
