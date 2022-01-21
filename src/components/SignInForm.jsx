@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
 		fontWeight: theme.fontWeights.bold,
 		textAlign: 'center',
 
-		padding: 10,
+		paddingHorizontal: 20,
+		paddingVertical: 10,
 
 		borderRadius: 5,
 	},
