@@ -20,8 +20,6 @@
 	},
 	"rules": {
 		"react/prop-types": "off",
-		"semi": "error",
-		"react/jsx-uses-react": "off",
-		"react/react-in-jsx-scope": "off"
+		"semi": "error"
 	}
 }
