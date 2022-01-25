@@ -19,8 +19,9 @@ const RepositoryList = () => {
 	const [repositories, setRepositories] = useState();
 
 	const fetchRepositories = async () => {
-		// Replace the IP address part with your own IP address!
-		const response = await fetch('http://192.168.100.16:5000/api/repositories');
+		const response = await fetch(
+			'http:///192.168.178.16:5000/api/repositories'
+		);
 		const json = await response.json();
 
 		console.log(json);
@@ -33,6 +34,7 @@ const RepositoryList = () => {
 	}, []);
 
 	// Get the nodes from the edges array
+	// Node being data from a single repository
 	const repositoryNodes = repositories
 		? repositories.edges.map((edge) => edge.node)
 		: [];
