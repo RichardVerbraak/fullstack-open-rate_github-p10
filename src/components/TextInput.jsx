@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyleSheet, TextInput as NativeTextInput } from 'react-native';
 
 // For styling later
