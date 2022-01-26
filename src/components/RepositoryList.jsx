@@ -19,8 +19,6 @@ const ItemSeparator = () => <View style={styles.separator} />;
 const RepositoryList = () => {
 	const { data, loading } = useRepositories();
 
-	console.log(data);
-
 	// Get the nodes from the repositories query and access the edges array
 	// Node being data from a single repository
 	const repositoryNodes = !loading
