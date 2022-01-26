@@ -17,12 +17,14 @@ const ItemSeparator = () => <View style={styles.separator} />;
 // tips for FlatList performance https://github.com/filipemerker/flatlist-performance-tips
 
 const RepositoryList = () => {
-	const { repositories } = useRepositories();
+	const { data, loading } = useRepositories();
 
-	// Get the nodes from the edges array
+	console.log(data);
+
+	// Get the nodes from the repositories query and access the edges array
 	// Node being data from a single repository
-	const repositoryNodes = repositories
-		? repositories.edges.map((edge) => edge.node)
+	const repositoryNodes = !loading
+		? data.repositories.edges.map((edge) => edge.node)
 		: [];
 
 	return (
