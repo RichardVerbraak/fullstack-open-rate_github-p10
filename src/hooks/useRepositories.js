@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useQuery } from '@apollo/client';
 
 const useRepositories = () => {
 	const [repositories, setRepositories] = useState();
