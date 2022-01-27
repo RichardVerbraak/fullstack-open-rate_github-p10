@@ -7,8 +7,9 @@ import { ApolloProvider } from '@apollo/client';
 import createApolloClient from './src/utils/apolloClient';
 
 import Constants from 'expo-constants';
+import AuthStorage from './src/utils/authStorage';
 
-const apolloClient = createApolloClient();
+const apolloClient = createApolloClient(authStorage);
 
 const App = () => {
 	console.log(Constants.manifest.extra.env);

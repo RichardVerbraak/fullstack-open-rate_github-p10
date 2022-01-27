@@ -25,8 +25,8 @@ const SignIn = () => {
 
 		try {
 			const { data } = await signIn({ username, password });
-			const storage = new AuthStorage();
-			storage.setAccessToken(data.authenticate.accessToken);
+
+			// setAccessToken(data.authenticate.accessToken);
 		} catch (error) {
 			console.log(error);
 		}
