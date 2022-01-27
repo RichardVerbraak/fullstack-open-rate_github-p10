@@ -1,8 +1,11 @@
+import { useMutation } from '@apollo/client';
+import { SIGN_IN } from '../graphql/mutations';
+
 const useSignIn = () => {
-	const [mutate, result] = useMutation(/* mutation arguments */);
+	const [mutate, result] = useMutation(SIGN_IN);
 
 	const signIn = async ({ username, password }) => {
-		// call the mutate function here with the right arguments
+		mutate({ variables: { username, password } });
 	};
 
 	return [signIn, result];
