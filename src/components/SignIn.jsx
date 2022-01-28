@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as yup from 'yup';
 
 import { Formik } from 'formik';
 import SignInForm from './SignInForm';
 import useSignIn from '../hooks/useSignIn';
-import AuthStorage from '../utils/authStorage';
+import useAuthStorage from '../hooks/useAuthStorage';
 
 const initialValues = {
 	username: '',
@@ -19,6 +19,7 @@ const validationSchema = yup.object().shape({
 // handleSubmit is a prop that comes from Formik which calls onSubmit after it's done
 const SignIn = () => {
 	const [signIn] = useSignIn();
+	const authStorage = useAuthStorage();
 
 	const onSubmit = async (values) => {
 		const { username, password } = values;
