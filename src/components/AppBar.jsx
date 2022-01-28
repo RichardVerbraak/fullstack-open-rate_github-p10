@@ -5,6 +5,8 @@ import Constants from 'expo-constants';
 import theme from '../theme.js';
 import AppBarTab from './AppBarTab.jsx';
 import { ScrollView } from 'react-native';
+import { useQuery } from '@apollo/client';
+import { GET_USER } from '../graphql/queries.js';
 
 const styles = StyleSheet.create({
 	container: {
@@ -30,7 +32,11 @@ const styles = StyleSheet.create({
 	},
 });
 
+// If user is signed in change the tab to Sign Out
 const AppBar = () => {
+	const { data } = useQuery(GET_USER);
+	console.log(data);
+
 	return (
 		<View style={styles.container}>
 			<ScrollView

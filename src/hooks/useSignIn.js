@@ -16,6 +16,8 @@ const useSignIn = () => {
 		// Stores it in AsyncStorage
 		await authStorage.setAccessToken(data.authenticate.accessToken);
 
+		// dispatch({ type: 'SIGN_IN', payload: data.authenticate.accessToken });
+
 		// Clears Apollo Clients cache and re-executes any active queries
 		apolloClient.resetStore();
 
