@@ -1,24 +1,25 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+// Note: AsyncStorage was also working without the use of async/await somehow
 class AuthStorage {
 	constructor(namespace = 'auth') {
 		this.namespace = namespace;
 	}
 
-	getAccessToken() {
-		const token = AsyncStorage.getItem(`${this.namespace}:token`);
+	async getAccessToken() {
+		const token = await AsyncStorage.getItem(`${this.namespace}:token`);
 		return token;
 	}
 
-	setAccessToken(accessToken) {
-		AsyncStorage.setItem(
+	async setAccessToken(accessToken) {
+		await AsyncStorage.setItem(
 			`${this.namespace}:token`,
 			JSON.stringify(accessToken)
 		);
 	}
 
-	removeAccessToken() {
-		AsyncStorage.removeItem(`${this.namespace}:token`);
+	async removeAccessToken() {
+		await AsyncStorage.removeItem(`${this.namespace}:token`);
 	}
 }
 
