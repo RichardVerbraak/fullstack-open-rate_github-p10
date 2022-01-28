@@ -9,6 +9,8 @@ import createApolloClient from './src/utils/apolloClient';
 import Constants from 'expo-constants';
 import AuthStorage from './src/utils/authStorage';
 
+const authStorage = new AuthStorage();
+
 const apolloClient = createApolloClient(authStorage);
 
 const App = () => {
