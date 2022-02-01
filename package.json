@@ -40,11 +40,14 @@
 		"@babel/core": "^7.9.0",
 		"@babel/eslint-parser": "^7.16.5",
 		"@babel/preset-react": "^7.16.7",
+		"@testing-library/jest-native": "^4.0.4",
+		"@testing-library/react-native": "^9.0.0",
 		"eslint": "^7.32.0",
 		"eslint-plugin-jest": "^26.0.0",
 		"eslint-plugin-react": "^7.28.0",
 		"jest": "^27.4.7",
-		"jest-expo": "^44.0.1"
+		"jest-expo": "^44.0.1",
+		"react-test-renderer": "^16.13.1"
 	},
 	"private": true
 }
