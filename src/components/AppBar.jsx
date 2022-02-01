@@ -7,6 +7,7 @@ import AppBarTab from './AppBarTab.jsx';
 import { ScrollView } from 'react-native';
 import { useQuery } from '@apollo/client';
 import { GET_USER } from '../graphql/queries.js';
+import SignOut from './SignOut.jsx';
 
 const styles = StyleSheet.create({
 	container: {
@@ -32,7 +33,6 @@ const styles = StyleSheet.create({
 	},
 });
 
-// If user is signed in change the tab to Sign Out
 const AppBar = () => {
 	const { data } = useQuery(GET_USER);
 	console.log(data);
@@ -44,7 +44,12 @@ const AppBar = () => {
 				horizontal={true}
 			>
 				<AppBarTab title={'Repositories'} url={'/'} text={styles.text} />
-				<AppBarTab title={'Sign In'} url={'/login'} text={styles.text} />
+
+				{data && data.me ? (
+					<SignOut text={styles.text} />
+				) : (
+					<AppBarTab title={'Sign In'} url={'/login'} text={styles.text} />
+				)}
 			</ScrollView>
 		</View>
 	);
