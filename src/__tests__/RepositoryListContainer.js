@@ -50,7 +50,7 @@ describe('RepositoryList', () => {
 				],
 			};
 
-			const { debug, getAllByTestId, getByTestId } = render(
+			const { getAllByTestId } = render(
 				<RepositoryListContainer repositories={repositories} />
 			);
 
@@ -61,11 +61,46 @@ describe('RepositoryList', () => {
 			///// Check values in both repo's
 
 			// Check full name
-			const repoName1 = within(firstItem).getByTestId('repositoryName');
-			expect(repoName1).toHaveTextContent('jaredpalmer/formik');
+			expect(within(firstItem).getByTestId('repositoryName')).toHaveTextContent(
+				'jaredpalmer/formik'
+			);
 
-			const repoName2 = within(secondItem).getByTestId('repositoryName');
-			expect(repoName2).toHaveTextContent('async-library/react-async');
+			expect(
+				within(secondItem).getByTestId('repositoryName')
+			).toHaveTextContent('async-library/react-async');
+
+			// Check description
+			expect(
+				within(firstItem).getByTestId('repositoryDescription')
+			).toHaveTextContent('Build forms in React, without the tears');
+
+			expect(
+				within(secondItem).getByTestId('repositoryDescription')
+			).toHaveTextContent('Flexible promise-based React data loader');
+
+			// Check language
+			expect(
+				within(firstItem).getByTestId('repositoryLanguage')
+			).toHaveTextContent('TypeScript');
+
+			expect(
+				within(secondItem).getByTestId('repositoryLanguage')
+			).toHaveTextContent('JavaScript');
+
+			// Check forks count
+			expect(
+				within(firstItem).getByTestId('repositoryForks')
+			).toHaveTextContent('1.6k');
+
+			expect(
+				within(secondItem).getByTestId('repositoryForks')
+			).toHaveTextContent('69');
+
+			// Check stargazers count
+
+			// Check rating
+
+			// Check review count
 		});
 	});
 });
