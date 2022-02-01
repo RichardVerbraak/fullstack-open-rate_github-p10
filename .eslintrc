@@ -1,13 +1,17 @@
 // Not exactly sure why but .eslintrc needs to be in the root folder else it'll warn about -
 // "cannot find module babel-preset-react"
 {
-	"plugins": ["react"],
+	"plugins": ["react", "react-native"],
 	"settings": {
 		"react": {
 			"version": "detect"
 		}
 	},
-	"extends": ["eslint:recommended", "plugin:react/recommended"],
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:jest/recommended"
+	],
 	"parser": "@babel/eslint-parser",
 	"parserOptions": {
 		"requireConfigFile": false,
