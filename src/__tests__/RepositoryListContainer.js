@@ -115,6 +115,13 @@ describe('RepositoryList', () => {
 			).toHaveTextContent('72');
 
 			// Check review count
+			expect(
+				within(firstItem).getByTestId('repositoryReviews')
+			).toHaveTextContent('3');
+
+			expect(
+				within(secondItem).getByTestId('repositoryReviews')
+			).toHaveTextContent('3');
 		});
 	});
 });

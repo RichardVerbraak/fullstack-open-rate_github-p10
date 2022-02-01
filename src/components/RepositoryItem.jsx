@@ -136,7 +136,9 @@ const RepositoryItem = ({ item }) => {
 				</View>
 
 				<View style={styles.countContainer}>
-					<Text fontWeight={'bold'}>{reviewCount}</Text>
+					<Text fontWeight={'bold'} testID='repositoryReviews'>
+						{reviewCount}
+					</Text>
 					<Text color={'textSecondary'}>Reviews</Text>
 				</View>
 
