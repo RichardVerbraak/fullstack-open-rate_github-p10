@@ -1,3 +1,9 @@
+import React from 'react';
+import { render } from '@testing-library/react-native';
+import { within } from '@testing-library/react-native';
+
+import RepositoryListContainer from '../components/RepositoryListContainer';
+
 describe('RepositoryList', () => {
 	describe('RepositoryListContainer', () => {
 		it('renders repository information correctly', () => {
@@ -43,6 +49,23 @@ describe('RepositoryList', () => {
 					},
 				],
 			};
+
+			const { debug, getAllByTestId, getByTestId } = render(
+				<RepositoryListContainer repositories={repositories} />
+			);
+
+			// Get the repo items now marked with a test id
+			const repositoryItems = getAllByTestId('repositoryItem');
+			const [firstItem, secondItem] = repositoryItems;
+
+			///// Check values in both repo's
+
+			// Check full name
+			const repoName1 = within(firstItem).getByTestId('repositoryName');
+			expect(repoName1).toHaveTextContent('jaredpalmer/formik');
+
+			const repoName2 = within(secondItem).getByTestId('repositoryName');
+			expect(repoName2).toHaveTextContent('async-library/react-async');
 		});
 	});
 });

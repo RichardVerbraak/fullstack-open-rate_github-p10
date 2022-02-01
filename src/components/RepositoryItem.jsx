@@ -96,11 +96,21 @@ const RepositoryItem = ({ item }) => {
 				</View>
 
 				<View style={styles.textContainer}>
-					<Text style={styles.fullName}>{fullName}</Text>
-					<Text color={'textSecondary'} style={styles.description}>
+					<Text style={styles.fullName} testID='repositoryName'>
+						{fullName}
+					</Text>
+					<Text
+						color={'textSecondary'}
+						style={styles.description}
+						testID='repositoryDescription'
+					>
 						{description}
 					</Text>
-					<Text fontWeight={'bold'} style={styles.language}>
+					<Text
+						fontWeight={'bold'}
+						style={styles.language}
+						testID='repositoryLanguage'
+					>
 						{language}
 					</Text>
 				</View>
