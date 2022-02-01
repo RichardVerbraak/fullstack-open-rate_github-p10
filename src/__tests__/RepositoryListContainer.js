@@ -106,6 +106,13 @@ describe('RepositoryList', () => {
 			).toHaveTextContent('1.8k');
 
 			// Check rating
+			expect(
+				within(firstItem).getByTestId('repositoryRating')
+			).toHaveTextContent('88');
+
+			expect(
+				within(secondItem).getByTestId('repositoryRating')
+			).toHaveTextContent('72');
 
 			// Check review count
 		});

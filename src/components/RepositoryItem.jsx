@@ -141,7 +141,9 @@ const RepositoryItem = ({ item }) => {
 				</View>
 
 				<View style={styles.countContainer}>
-					<Text fontWeight={'bold'}>{ratingAverage}</Text>
+					<Text fontWeight={'bold'} testID='repositoryRating'>
+						{ratingAverage}
+					</Text>
 					<Text color={'textSecondary'}>Rating</Text>
 				</View>
 			</View>
