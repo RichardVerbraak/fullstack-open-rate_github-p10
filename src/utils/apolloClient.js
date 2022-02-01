@@ -13,11 +13,13 @@ const createApolloClient = (authStorage) => {
 			// get the authentication token from storage if it exists
 			const accessToken = await authStorage.getAccessToken();
 
+			console.log(accessToken);
+
 			// return the headers to the context so httpLink can read them
 			return {
 				headers: {
 					...headers,
-					authorization: accessToken ? `Bearer ${accessToken}` : '',
+					Authorization: accessToken ? `Bearer ${accessToken}` : '',
 				},
 			};
 		} catch (error) {
