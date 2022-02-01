@@ -97,6 +97,13 @@ describe('RepositoryList', () => {
 			).toHaveTextContent('69');
 
 			// Check stargazers count
+			expect(
+				within(firstItem).getByTestId('repositoryStars')
+			).toHaveTextContent('21.9k');
+
+			expect(
+				within(secondItem).getByTestId('repositoryStars')
+			).toHaveTextContent('1.8k');
 
 			// Check rating
 

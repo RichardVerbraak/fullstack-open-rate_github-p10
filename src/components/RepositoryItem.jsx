@@ -118,7 +118,7 @@ const RepositoryItem = ({ item }) => {
 
 			<View style={styles.subContainer}>
 				<View style={styles.countContainer}>
-					<Text fontWeight={'bold'}>
+					<Text fontWeight={'bold'} testID='repositoryStars'>
 						{stargazersCount >= 1000
 							? `${Math.round(stargazersCount / 100) / 10}k`
 							: stargazersCount}
