@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import SignInContainer from '../components/SignInContainer';
-// ...
 
 describe('SignIn', () => {
 	describe('SignInContainer', () => {
@@ -19,6 +18,7 @@ describe('SignIn', () => {
 			fireEvent.changeText(getByPlaceholderText('Password'), 'password');
 			fireEvent.press(getByText('Sign In'));
 
+			// waitFor periodically calls expectations to see if the element has appeared or has been called
 			await waitFor(() => {
 				// expect the onSubmit function to have been called once and with a correct first argument
 				expect(onSubmit).toHaveBeenCalledTimes(1);
