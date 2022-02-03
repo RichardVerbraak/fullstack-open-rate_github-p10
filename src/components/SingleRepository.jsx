@@ -1,6 +1,8 @@
+import { useQuery } from '@apollo/client';
 import React from 'react';
 import { View } from 'react-native';
 import { useParams } from 'react-router-native';
+import { GET_SINGLE_REPO } from '../graphql/queries';
 import RepositoryItem from './RepositoryItem';
 
 const SingleRepository = () => {
@@ -8,13 +10,13 @@ const SingleRepository = () => {
 	const { id } = useParams();
 
 	// Fetch repo data based on url
-	// const { data } = useQuery(GET_SINGLE_REPO, id)
+	const { data, loading, error } = useQuery(GET_SINGLE_REPO, {
+		variables: { repositoryId: id },
+	});
 
-	return (
-		<View>
-			<RepositoryItem item={data} />
-		</View>
-	);
+	const item = data && data.repository;
+
+	return <View>{!loading && <RepositoryItem item={item} />}</View>;
 };
 
 export default SingleRepository;
