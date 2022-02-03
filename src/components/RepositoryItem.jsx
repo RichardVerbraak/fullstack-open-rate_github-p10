@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, Image, Pressable } from 'react-native';
 import { useNavigate } from 'react-router-native';
-import theme from '../theme';
 
+import * as Linking from 'expo-linking';
+
+import theme from '../theme';
 import Text from './Text';
 
 const styles = StyleSheet.create({
@@ -114,6 +116,10 @@ const RepositoryItem = ({ item, url }) => {
 		navigate(`/${id}`, { replace: true });
 	};
 
+	const openLink = (url) => {
+		Linking.openURL(url);
+	};
+
 	return (
 		<Pressable
 			onPress={() => {
@@ -181,9 +187,15 @@ const RepositoryItem = ({ item, url }) => {
 					</View>
 				</View>
 
-				<View>
-					<Text style={styles.button}>Open in GitHub</Text>
-				</View>
+				{url && (
+					<Pressable
+						onPress={() => {
+							openLink(url);
+						}}
+					>
+						<Text style={styles.button}>Open in GitHub</Text>
+					</Pressable>
+				)}
 			</View>
 		</Pressable>
 	);
