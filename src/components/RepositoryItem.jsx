@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
 
 		width: '90%',
 
+		marginVertical: 10,
 		marginLeft: 'auto',
 		marginRight: 'auto',
 	},

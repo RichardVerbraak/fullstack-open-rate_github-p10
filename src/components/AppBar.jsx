@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
 
 const AppBar = () => {
 	const { data } = useQuery(GET_USER);
-	console.log(data);
 
 	return (
 		<View style={styles.container}>

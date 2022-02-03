@@ -17,8 +17,6 @@ const SingleRepository = () => {
 	const item = data && data.repository;
 	const url = data && data.repository.url;
 
-	console.log(url);
-
 	return <View>{!loading && <RepositoryItem item={item} url={url} />}</View>;
 };
 
