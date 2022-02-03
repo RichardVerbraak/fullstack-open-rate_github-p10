@@ -5,6 +5,7 @@ const GET_REPOSITORIES = gql`
 		repositories {
 			edges {
 				node {
+					id
 					name
 					fullName
 					reviewCount
@@ -20,6 +21,23 @@ const GET_REPOSITORIES = gql`
 	}
 `;
 
+const GET_SINGLE_REPO = gql`
+	query getSingleRepo($repositoryId: ID!) {
+		repository(id: $repositoryId) {
+			fullName
+			name
+			fullName
+			reviewCount
+			ratingAverage
+			stargazersCount
+			forksCount
+			language
+			description
+			ownerAvatarUrl
+		}
+	}
+`;
+
 // Query to check if the user is authenticated, will return null for both fields if there is no token
 const GET_USER = gql`
 	query getUser {
@@ -30,4 +48,4 @@ const GET_USER = gql`
 	}
 `;
 
-export { GET_REPOSITORIES, GET_USER };
+export { GET_REPOSITORIES, GET_SINGLE_REPO, GET_USER };
