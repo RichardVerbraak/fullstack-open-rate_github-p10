@@ -75,9 +75,26 @@ const styles = StyleSheet.create({
 		borderRadius: 5,
 		padding: 7,
 	},
+
+	button: {
+		backgroundColor: theme.colors.secondary,
+		color: '#fff',
+		fontWeight: theme.fontWeights.bold,
+		textAlign: 'center',
+
+		paddingHorizontal: 20,
+		paddingVertical: 10,
+
+		borderRadius: 5,
+
+		width: '90%',
+
+		marginLeft: 'auto',
+		marginRight: 'auto',
+	},
 });
 
-const RepositoryItem = ({ item }) => {
+const RepositoryItem = ({ item, url }) => {
 	const navigate = useNavigate();
 
 	const {
@@ -161,6 +178,10 @@ const RepositoryItem = ({ item }) => {
 						</Text>
 						<Text color={'textSecondary'}>Rating</Text>
 					</View>
+				</View>
+
+				<View>
+					<Text style={styles.button}>Open in GitHub</Text>
 				</View>
 			</View>
 		</Pressable>

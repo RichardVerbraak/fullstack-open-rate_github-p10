@@ -25,6 +25,7 @@ const GET_SINGLE_REPO = gql`
 	query getSingleRepo($repositoryId: ID!) {
 		repository(id: $repositoryId) {
 			id
+			url
 			fullName
 			name
 			fullName

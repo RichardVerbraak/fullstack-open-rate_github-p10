@@ -15,8 +15,11 @@ const SingleRepository = () => {
 	});
 
 	const item = data && data.repository;
+	const url = data && data.repository.url;
 
-	return <View>{!loading && <RepositoryItem item={item} />}</View>;
+	console.log(url);
+
+	return <View>{!loading && <RepositoryItem item={item} url={url} />}</View>;
 };
 
 export default SingleRepository;
