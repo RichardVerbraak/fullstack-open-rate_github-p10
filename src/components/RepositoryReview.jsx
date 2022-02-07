@@ -1,17 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import theme from '../theme';
+import Text from './Text';
 
 const styles = StyleSheet.create({
 	itemContainer: {
 		backgroundColor: '#fff',
 
-		paddingTop: 15,
+		paddingHorizontal: 20,
+		paddingVertical: 20,
 	},
 
 	contentContainer: {
 		display: 'flex',
 		flexDirection: 'row',
-		padding: 10,
 	},
 
 	ratingContainer: {
@@ -22,17 +24,21 @@ const styles = StyleSheet.create({
 		width: 50,
 		height: 50,
 
-		borderColor: 'blue',
+		borderColor: theme.colors.secondary,
 		borderWidth: 2,
 		borderRadius: 50,
 	},
 
 	rating: {
-		color: 'blue',
+		color: theme.colors.secondary,
 	},
 
 	textContainer: {
 		paddingHorizontal: 20,
+	},
+
+	textHeading: {
+		paddingBottom: 5,
 	},
 });
 
@@ -41,11 +47,16 @@ const RepositoryReview = ({ review }) => {
 		<View style={styles.itemContainer}>
 			<View style={styles.contentContainer}>
 				<View style={styles.ratingContainer}>
-					<Text style={styles.rating}>{review.rating}</Text>
+					<Text fontWeight={'bold'} style={styles.rating}>
+						{review.rating}
+					</Text>
 				</View>
+
 				<View style={styles.textContainer}>
-					<Text>{review.user.username}</Text>
-					<Text>{review.createdAt}</Text>
+					<View style={styles.textHeading}>
+						<Text fontWeight={'bold'}>{review.user.username}</Text>
+						<Text color={'textSecondary'}>{review.createdAt}</Text>
+					</View>
 					<Text>{review.text}</Text>
 				</View>
 			</View>
