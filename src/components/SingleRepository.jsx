@@ -29,8 +29,6 @@ const SingleRepository = () => {
 	const url = data && data.repository.url;
 	const reviews = data && data.repository.reviews.edges;
 
-	console.log(reviews);
-
 	return (
 		<View>
 			{!loading && (
@@ -39,6 +37,7 @@ const SingleRepository = () => {
 					renderItem={({ item: { node } }) => {
 						return <RepositoryReview review={node} />;
 					}}
+					keyExtractor={({ node: { id } }) => id}
 					ItemSeparatorComponent={ItemSeparator}
 					ListHeaderComponent={() => <RepositoryItem item={item} url={url} />}
 				/>
