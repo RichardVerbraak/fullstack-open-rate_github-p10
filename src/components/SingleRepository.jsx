@@ -1,11 +1,20 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 import { useParams } from 'react-router-native';
 import { GET_SINGLE_REPO } from '../graphql/queries';
 
 import RepositoryItem from './RepositoryItem';
 import RepositoryReview from './RepositoryReview';
+
+const styles = StyleSheet.create({
+	separator: {
+		height: 10,
+	},
+});
+
+// Renders a view in between every item in the flatlist
+const ItemSeparator = () => <View style={styles.separator} />;
 
 const SingleRepository = () => {
 	// Get ID from the url
@@ -30,6 +39,7 @@ const SingleRepository = () => {
 					renderItem={({ item: { node }, index }) => {
 						return <RepositoryReview review={node} />;
 					}}
+					ItemSeparatorComponent={ItemSeparator}
 					ListHeaderComponent={() => <RepositoryItem item={item} url={url} />}
 				/>
 			)}
