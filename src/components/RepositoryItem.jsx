@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		backgroundColor: '#fff',
 
-		paddingTop: 15,
+		paddingVertical: 15,
+		paddingHorizontal: 20,
 		marginBottom: 10,
 	},
 
@@ -20,8 +21,6 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		flexDirection: 'row',
 		alignContent: 'space-between',
-
-		paddingLeft: 20,
 	},
 
 	imageContainer: {
@@ -57,7 +56,6 @@ const styles = StyleSheet.create({
 
 		// Could do this with space-around/evenly in the itemContainer as well?
 		paddingTop: 20,
-		paddingBottom: 15,
 	},
 
 	countContainer: {
@@ -85,14 +83,16 @@ const styles = StyleSheet.create({
 		fontWeight: theme.fontWeights.bold,
 		textAlign: 'center',
 
+		marginTop: 15,
+
 		paddingHorizontal: 20,
-		paddingVertical: 10,
+		paddingVertical: 15,
 
 		borderRadius: 5,
 
-		width: '90%',
+		// To 'stretch' out the entire button
+		width: '100%',
 
-		marginVertical: 10,
 		marginLeft: 'auto',
 		marginRight: 'auto',
 	},

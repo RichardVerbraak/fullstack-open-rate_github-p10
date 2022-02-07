@@ -36,7 +36,7 @@ const SingleRepository = () => {
 			{!loading && (
 				<FlatList
 					data={reviews}
-					renderItem={({ item: { node }, index }) => {
+					renderItem={({ item: { node } }) => {
 						return <RepositoryReview review={node} />;
 					}}
 					ItemSeparatorComponent={ItemSeparator}
