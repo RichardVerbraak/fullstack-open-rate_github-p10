@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
-import { View, Flatlist } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { useParams } from 'react-router-native';
 import { GET_SINGLE_REPO } from '../graphql/queries';
 
 import RepositoryItem from './RepositoryItem';
-import RepositoryReviews from './RepositoryReviews';
+import RepositoryReview from './RepositoryReview';
 
 const SingleRepository = () => {
 	// Get ID from the url
@@ -18,19 +18,23 @@ const SingleRepository = () => {
 
 	const item = data && data.repository;
 	const url = data && data.repository.url;
+	const reviews = data && data.repository.reviews.edges;
+
+	console.log(reviews);
 
 	return (
 		<View>
 			{!loading && (
-				<Flatlist
+				<FlatList
+					data={reviews}
+					renderItem={({ item: { node }, index }) => {
+						return <RepositoryReview review={node} />;
+					}}
 					ListHeaderComponent={() => <RepositoryItem item={item} url={url} />}
 				/>
 			)}
 		</View>
 	);
 };
-
-// <RepositoryItem item={item} url={url} />
-// 					<RepositoryReviews />
 
 export default SingleRepository;
