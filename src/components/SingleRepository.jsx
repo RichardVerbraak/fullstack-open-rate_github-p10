@@ -20,9 +20,18 @@ const SingleRepository = () => {
 	// Get ID from the url
 	const { id } = useParams();
 
+	// Article on fetch policies: https://medium.com/@galen.corey/understanding-apollo-fetch-policies-705b5ad71980
+	// Explanation for cache and network
+	// 1. You query for data -> Apollo checks cache
+	// 2. If data is in cache return the data
+	// 3. Regardless if the data was found, still query the gql server
+	// 4. Update the cache with new data from the server
+	// 5. Return the updated server data
+
 	// Fetch repo data based on url
 	const { data, loading, error } = useQuery(GET_SINGLE_REPO, {
 		variables: { repositoryId: id },
+		fetchPolicy: 'cache-and-network',
 	});
 
 	const item = data && data.repository;
