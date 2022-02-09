@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Formik } from 'formik';
 import FormikTextInput from './FormikTextInput';
-import { object, string, number, date } from 'yup';
+import { object, string, number } from 'yup';
 
 import theme from '../theme';
 
@@ -54,9 +54,13 @@ const initialValues = {
 };
 
 const validationSchema = object({
-	username: string().required(),
-	name: string().required(),
-	rating: number().required().moreThan(0).max(100),
+	username: string().required('Username is required'),
+	name: string().required('Name is required'),
+	rating: number()
+		.typeError('Rating must be a number')
+		.required('Number is required')
+		.moreThan(0, 'Enter a rating higher than 0')
+		.max(100, 'Enter a rating lower than 100'),
 	review: string().optional(),
 });
 
