@@ -9,8 +9,10 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		justifyContent: 'space-between',
 
-		height: '40%',
-		width: '90%',
+		backgroundColor: '#fff',
+
+		height: 300,
+		width: '100%',
 
 		marginLeft: 'auto',
 		marginRight: 'auto',
@@ -32,8 +34,9 @@ const styles = StyleSheet.create({
 		fontWeight: theme.fontWeights.bold,
 		textAlign: 'center',
 
-		paddingHorizontal: 20,
-		paddingVertical: 10,
+		marginTop: 10,
+
+		paddingVertical: 20,
 
 		borderRadius: 5,
 	},

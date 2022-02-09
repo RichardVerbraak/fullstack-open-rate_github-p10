@@ -9,14 +9,16 @@ import theme from '../theme';
 const styles = StyleSheet.create({
 	formContainer: {
 		display: 'flex',
-		justifyContent: 'space-between',
+		justifyContent: 'space-around',
 
-		height: '40%',
-		width: '90%',
+		backgroundColor: '#fff',
+
+		height: 500,
+		width: '100%',
 
 		marginLeft: 'auto',
 		marginRight: 'auto',
-		padding: 20,
+		padding: 30,
 	},
 
 	input: {
@@ -35,8 +37,7 @@ const styles = StyleSheet.create({
 		fontWeight: theme.fontWeights.bold,
 		textAlign: 'center',
 
-		paddingHorizontal: 20,
-		paddingVertical: 10,
+		paddingVertical: 20,
 
 		borderRadius: 5,
 	},

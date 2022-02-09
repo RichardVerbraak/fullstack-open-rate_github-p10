@@ -42,10 +42,17 @@ const AppBar = () => {
 				contentContainerStyle={styles.contentContainer}
 				horizontal={true}
 			>
-				<AppBarTab title={'Repositories'} url={'/'} text={styles.text} />
+				<AppBarTab title='Repositories' url='/' text={styles.text} />
 
 				{data && data.me ? (
-					<SignOut text={styles.text} />
+					<>
+						<AppBarTab
+							title='Create a review'
+							url='/review'
+							text={styles.text}
+						/>
+						<SignOut text={styles.text} />
+					</>
 				) : (
 					<AppBarTab title={'Sign In'} url={'/login'} text={styles.text} />
 				)}
