@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Formik } from 'formik';
 import FormikTextInput from './FormikTextInput';
+import { object, string, number, date } from 'yup';
 
 import theme from '../theme';
 
@@ -31,11 +32,13 @@ const styles = StyleSheet.create({
 		borderRadius: 5,
 	},
 
-	signIn: {
+	createButton: {
 		backgroundColor: theme.colors.secondary,
 		color: '#fff',
 		fontWeight: theme.fontWeights.bold,
 		textAlign: 'center',
+
+		marginTop: 10,
 
 		paddingVertical: 20,
 
@@ -50,10 +53,17 @@ const initialValues = {
 	review: '',
 };
 
+const validationSchema = object({
+	username: string().required(),
+	name: string().required(),
+	rating: number().required().moreThan(0).max(100),
+	review: string().optional(),
+});
+
 const ReviewForm = () => {
 	return (
 		<View>
-			<Formik initialValues={initialValues}>
+			<Formik initialValues={initialValues} validationSchema={validationSchema}>
 				{({ handleSubmit }) => {
 					return (
 						<View onSubmit={handleSubmit} style={styles.formContainer}>
@@ -78,7 +88,7 @@ const ReviewForm = () => {
 								style={styles.input}
 							/>
 							<Pressable onPress={handleSubmit}>
-								<Text style={styles.signIn}>Create a Review</Text>
+								<Text style={styles.createButton}>Create a Review</Text>
 							</Pressable>
 						</View>
 					);
