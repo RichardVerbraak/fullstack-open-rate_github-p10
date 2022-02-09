@@ -6,6 +6,9 @@ import FormikTextInput from './FormikTextInput';
 import { object, string, number } from 'yup';
 
 import theme from '../theme';
+import { useMutation } from '@apollo/client';
+import { CREATE_REVIEW } from '../graphql/mutations';
+import { useNavigate } from 'react-router-native';
 
 const styles = StyleSheet.create({
 	formContainer: {
@@ -65,9 +68,36 @@ const validationSchema = object({
 });
 
 const ReviewForm = () => {
+	const [createReview, { data, error }] = useMutation(CREATE_REVIEW);
+	const navigate = useNavigate();
+
+	console.log(data);
+	console.log(error);
+
+	const onSubmit = async (values) => {
+		console.log(values);
+
+		await createReview({
+			variables: {
+				review: {
+					ownerName: values.username,
+					repositoryName: values.name,
+					rating: parseInt(values.rating),
+					text: values.review,
+				},
+			},
+		});
+
+		// navigate(`/${data.id}`)
+	};
+
 	return (
 		<View>
-			<Formik initialValues={initialValues} validationSchema={validationSchema}>
+			<Formik
+				initialValues={initialValues}
+				validationSchema={validationSchema}
+				onSubmit={onSubmit}
+			>
 				{({ handleSubmit }) => {
 					return (
 						<View onSubmit={handleSubmit} style={styles.formContainer}>
