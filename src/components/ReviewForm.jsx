@@ -90,6 +90,7 @@ const ReviewForm = () => {
 								name='review'
 								placeholder='Review'
 								style={styles.input}
+								multiline={true}
 							/>
 							<Pressable onPress={handleSubmit}>
 								<Text style={styles.createButton}>Create a Review</Text>
