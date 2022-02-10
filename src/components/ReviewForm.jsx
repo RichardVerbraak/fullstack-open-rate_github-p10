@@ -43,16 +43,11 @@ const validationSchema = object({
 });
 
 const ReviewForm = () => {
-	const [createReview, { data, error }] = useMutation(CREATE_REVIEW);
+	const [createReview] = useMutation(CREATE_REVIEW);
 	const navigate = useNavigate();
 
-	console.log(data);
-	console.log(error);
-
 	const onSubmit = async (values) => {
-		console.log(values);
-
-		await createReview({
+		const { data } = await createReview({
 			variables: {
 				review: {
 					ownerName: values.username,
@@ -63,8 +58,7 @@ const ReviewForm = () => {
 			},
 		});
 
-		// Test out later
-		// navigate(`/${data.id}`)
+		navigate(`/${data.createReview.repositoryId}`);
 	};
 
 	return (
