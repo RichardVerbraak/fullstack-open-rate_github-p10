@@ -31,8 +31,14 @@ const initialValues = {
 };
 
 const validationSchema = object({
-	username: string().required('Username is required'),
-	password: string().required('Password is required'),
+	username: string()
+		.min(1, 'Username must have a minimum of 1 character')
+		.max(30, 'Username cannot exceed 30 characters')
+		.required('Username is required'),
+	password: string()
+		.min(5, 'Password must have a minimum of 5 characters')
+		.max(50, 'Password cannot exceed 50 characters')
+		.required('Password is required'),
 	passwordConfirmation: string()
 		.oneOf([ref('password'), null], 'Passwords must match')
 		.required('Password confirm is required'),
