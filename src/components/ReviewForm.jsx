@@ -88,6 +88,7 @@ const ReviewForm = () => {
 			},
 		});
 
+		// Test out later
 		// navigate(`/${data.id}`)
 	};
 
@@ -100,7 +101,7 @@ const ReviewForm = () => {
 			>
 				{({ handleSubmit }) => {
 					return (
-						<View onSubmit={handleSubmit} style={styles.formContainer}>
+						<View style={styles.formContainer}>
 							<FormikTextInput
 								name='username'
 								placeholder='Repository Owner Name'
