@@ -3,13 +3,15 @@ import React from 'react';
 
 import { Formik } from 'formik';
 import FormikTextInput from './FormikTextInput';
+import { object, string } from 'yup';
 
-import { theme, formStyles } from '../theme';
+import { formStyles } from '../theme';
+import { ref } from 'yup';
 
 const styles = StyleSheet.create({
 	formContainer: {
 		...formStyles.formContainer,
-		height: 300,
+		height: 400,
 		backgroundColor: '#fff',
 	},
 
@@ -28,6 +30,14 @@ const initialValues = {
 	passwordConfirmation: '',
 };
 
+const validationSchema = object({
+	username: string().required('Username is required'),
+	password: string().required('Password is required'),
+	passwordConfirmation: string()
+		.oneOf([ref('password'), null], 'Passwords must match')
+		.required('Password confirm is required'),
+});
+
 const SignUpForm = () => {
 	const onSubmit = (values) => {
 		console.log(values);
@@ -35,7 +45,11 @@ const SignUpForm = () => {
 
 	return (
 		<View>
-			<Formik initialValues={initialValues} onSubmit={onSubmit}>
+			<Formik
+				initialValues={initialValues}
+				validationSchema={validationSchema}
+				onSubmit={onSubmit}
+			>
 				{({ handleSubmit }) => {
 					return (
 						<View style={styles.formContainer}>
