@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-native';
 
 import * as Linking from 'expo-linking';
 
-import theme from '../theme';
+import { theme } from '../theme';
 import Text from './Text';
 
 const styles = StyleSheet.create({

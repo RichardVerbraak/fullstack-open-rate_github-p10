@@ -2,43 +2,22 @@ import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import FormikTextInput from './FormikTextInput';
-import theme from '../theme';
+import { formStyles } from '../theme';
 
 const styles = StyleSheet.create({
 	formContainer: {
-		display: 'flex',
-		justifyContent: 'space-between',
-
-		backgroundColor: '#fff',
+		...formStyles.formContainer,
 
 		height: 300,
-		width: '100%',
-
-		marginLeft: 'auto',
-		marginRight: 'auto',
 		padding: 20,
 	},
 
 	input: {
-		paddingHorizontal: 20,
-		paddingVertical: 10,
-
-		borderStyle: 'solid',
-		borderWidth: 0.5,
-		borderRadius: 5,
+		...formStyles.input,
 	},
 
 	signIn: {
-		backgroundColor: theme.colors.secondary,
-		color: '#fff',
-		fontWeight: theme.fontWeights.bold,
-		textAlign: 'center',
-
-		marginTop: 10,
-
-		paddingVertical: 20,
-
-		borderRadius: 5,
+		...formStyles.button,
 	},
 });
 

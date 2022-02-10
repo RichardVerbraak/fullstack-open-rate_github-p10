@@ -5,47 +5,22 @@ import { Formik } from 'formik';
 import FormikTextInput from './FormikTextInput';
 import { object, string, number } from 'yup';
 
-import theme from '../theme';
+import { theme, formStyles } from '../theme';
 import { useMutation } from '@apollo/client';
 import { CREATE_REVIEW } from '../graphql/mutations';
 import { useNavigate } from 'react-router-native';
 
 const styles = StyleSheet.create({
 	formContainer: {
-		display: 'flex',
-		justifyContent: 'space-around',
-
-		backgroundColor: '#fff',
-
-		height: 500,
-		width: '100%',
-
-		marginLeft: 'auto',
-		marginRight: 'auto',
-		padding: 30,
+		...formStyles.formContainer,
 	},
 
 	input: {
-		paddingHorizontal: 20,
-		paddingVertical: 10,
-
-		borderColor: theme.colors.textSecondary,
-		borderStyle: 'solid',
-		borderWidth: 0.5,
-		borderRadius: 5,
+		...formStyles.input,
 	},
 
 	createButton: {
-		backgroundColor: theme.colors.secondary,
-		color: '#fff',
-		fontWeight: theme.fontWeights.bold,
-		textAlign: 'center',
-
-		marginTop: 10,
-
-		paddingVertical: 20,
-
-		borderRadius: 5,
+		...formStyles.button,
 	},
 });
 

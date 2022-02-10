@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
-import theme from '../theme.js';
+import { theme } from '../theme.js';
 import AppBarTab from './AppBarTab.jsx';
 import { ScrollView } from 'react-native';
 import { useQuery } from '@apollo/client';
