@@ -7,6 +7,10 @@ import { object, string } from 'yup';
 
 import { formStyles } from '../theme';
 import { ref } from 'yup';
+import { useMutation } from '@apollo/client';
+import { SIGN_UP } from '../graphql/mutations';
+import useSignIn from '../hooks/useSignIn';
+import { useNavigate } from 'react-router-native';
 
 const styles = StyleSheet.create({
 	formContainer: {
@@ -45,8 +49,23 @@ const validationSchema = object({
 });
 
 const SignUpForm = () => {
-	const onSubmit = (values) => {
-		console.log(values);
+	const [signUp] = useMutation(SIGN_UP);
+	const [signIn] = useSignIn();
+	const navigate = useNavigate();
+
+	const onSubmit = async ({ username, password }) => {
+		try {
+			await signUp({
+				variables: {
+					user: { username, password },
+				},
+			});
+
+			await signIn({ username, password });
+			navigate('/');
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	return (
@@ -67,11 +86,13 @@ const SignUpForm = () => {
 							<FormikTextInput
 								name='password'
 								placeholder='Password'
+								secureTextEntry={true}
 								style={styles.input}
 							/>
 							<FormikTextInput
 								name='passwordConfirmation'
 								placeholder='Password confirmation'
+								secureTextEntry={true}
 								style={styles.input}
 							/>
 							<Pressable onPress={handleSubmit}>
