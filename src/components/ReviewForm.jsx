@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 import FormikTextInput from './FormikTextInput';
 import { object, string, number } from 'yup';
 
-import { theme, formStyles } from '../theme';
+import { formStyles } from '../theme';
 import { useMutation } from '@apollo/client';
 import { CREATE_REVIEW } from '../graphql/mutations';
 import { useNavigate } from 'react-router-native';

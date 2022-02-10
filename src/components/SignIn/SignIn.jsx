@@ -1,6 +1,6 @@
 import React from 'react';
 
-import useSignIn from '../hooks/useSignIn';
+import useSignIn from '../../hooks/useSignIn';
 import { useNavigate } from 'react-router-native';
 import SignInContainer from './SignInContainer';
 
