@@ -5,9 +5,9 @@ import { Route, Routes, Navigate } from 'react-router-native';
 import AppBar from './AppBar';
 import RepositoryList from './RepositoryList';
 import SingleRepository from './SingleRepository';
-import SignIn from './SignIn/SignIn';
-import ReviewForm from './ReviewForm';
-import SignUpForm from './SignUpForm';
+import SignIn from './Forms/SignIn/SignIn';
+import ReviewForm from './Forms/Review/ReviewForm';
+import SignUpForm from './Forms/SignUp/SignUpForm';
 
 const styles = StyleSheet.create({
 	container: {

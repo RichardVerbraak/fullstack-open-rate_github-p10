@@ -2,15 +2,16 @@ import { Pressable, Text, View, StyleSheet } from 'react-native';
 import React from 'react';
 
 import { Formik } from 'formik';
-import FormikTextInput from './FormikTextInput';
-import { object, string } from 'yup';
+import FormikTextInput from '../../FormikTextInput';
+import { object, string, ref } from 'yup';
 
-import { formStyles } from '../theme';
-import { ref } from 'yup';
 import { useMutation } from '@apollo/client';
-import { SIGN_UP } from '../graphql/mutations';
-import useSignIn from '../hooks/useSignIn';
+import { SIGN_UP } from '../../../graphql/mutations';
+import useSignIn from '../../../hooks/useSignIn';
+
 import { useNavigate } from 'react-router-native';
+
+import { formStyles } from '../../../theme';
 
 const styles = StyleSheet.create({
 	formContainer: {
