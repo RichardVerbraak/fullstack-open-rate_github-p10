@@ -1,6 +1,7 @@
 import React from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import RepositoryItem from './RepositoryItem';
+import RepositorySortMenu from './RepositorySortMenu';
 
 const styles = StyleSheet.create({
 	separator: {
@@ -11,6 +12,8 @@ const styles = StyleSheet.create({
 // Renders a view in between every item in the flatlist
 const ItemSeparator = () => <View style={styles.separator} />;
 
+// Add the Sort picker as a List Header
+
 const RepositoryListContainer = ({ repositories, loading }) => {
 	const repositoryNodes = !loading
 		? repositories.edges.map((edge) => edge.node)
@@ -18,6 +21,7 @@ const RepositoryListContainer = ({ repositories, loading }) => {
 
 	return (
 		<FlatList
+			ListHeaderComponent={<RepositorySortMenu />}
 			data={repositoryNodes}
 			ItemSeparatorComponent={ItemSeparator}
 			renderItem={({ item }) => {

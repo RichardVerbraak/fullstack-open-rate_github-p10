@@ -1,5 +1,9 @@
 import { gql } from '@apollo/client';
 
+// CREATED_AT or RATING_AVERAGE
+// ASC or DESC
+// repositories(orderBy: $orderBy, orderDirection: $orderDirection)
+
 const GET_REPOSITORIES = gql`
 	query getRepositories {
 		repositories {
