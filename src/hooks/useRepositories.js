@@ -9,6 +9,7 @@ const useRepositories = () => {
 	// Variables: orderBy and orderDirection passed into here
 	const { data, loading, error } = useQuery(GET_REPOSITORIES, {
 		fetchPolicy: 'cache-and-network',
+		variables: { orderBy: 'CREATED_AT', orderDirection: 'ASC' },
 	});
 
 	const repositories = data && data.repositories;
