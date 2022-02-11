@@ -7,7 +7,10 @@ import RepositoryListContainer from './RepositoryListContainer';
 // tips for FlatList performance https://github.com/filipemerker/flatlist-performance-tips
 
 const RepositoryList = () => {
-	const { repositories, loading } = useRepositories();
+	const { repositories, loading } = useRepositories({
+		orderBy: 'CREATED_AT',
+		orderDirection: 'ASC',
+	});
 
 	return (
 		<RepositoryListContainer repositories={repositories} loading={loading} />

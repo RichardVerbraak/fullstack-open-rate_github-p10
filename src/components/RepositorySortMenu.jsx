@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import { Menu, Button } from 'react-native-paper';
+import useRepositories from '../hooks/useRepositories';
 
 const styles = StyleSheet.create({
 	menuContainer: {
@@ -18,8 +19,8 @@ const styles = StyleSheet.create({
 });
 
 const RepositorySortMenu = () => {
+	const [sortOption, setSortOption] = useState('Latest repositories');
 	const [visible, setVisible] = useState(false);
-	const [sortOption, setSortOpion] = useState('Latest repositories');
 
 	const openMenu = () => {
 		setVisible(true);
@@ -43,7 +44,35 @@ const RepositorySortMenu = () => {
 					</>
 				}
 			>
-				<Menu.Item title='test' />
+				<Menu.Item title='Select an item...' disabled />
+				<Menu.Item
+					title='Latest repositories'
+					onPress={() => {
+						setSortOption('Latest repositories');
+						// Close menu after picking?
+						useRepositories({ orderBy: 'CREATED_AT', orderDirection: 'ASC' });
+					}}
+				/>
+				<Menu.Item
+					title='Highest rated repositories'
+					onPress={() => {
+						setSortOption('Highest rated repositories');
+						useRepositories({
+							orderBy: 'RATING_AVERAGE',
+							orderDirection: 'DESC',
+						});
+					}}
+				/>
+				<Menu.Item
+					title='Lowest rated repositories'
+					onPress={() => {
+						setSortOption('Lowest rated repositories');
+						useRepositories({
+							orderBy: 'RATING_AVERAGE',
+							orderDirection: 'ASC',
+						});
+					}}
+				/>
 			</Menu>
 		</View>
 	);
