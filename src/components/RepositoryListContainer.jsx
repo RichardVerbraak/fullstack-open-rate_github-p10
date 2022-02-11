@@ -12,8 +12,6 @@ const styles = StyleSheet.create({
 // Renders a view in between every item in the flatlist
 const ItemSeparator = () => <View style={styles.separator} />;
 
-// Add the Sort picker as a List Header
-
 const RepositoryListContainer = ({ repositories, loading }) => {
 	const repositoryNodes = !loading
 		? repositories.edges.map((edge) => edge.node)
