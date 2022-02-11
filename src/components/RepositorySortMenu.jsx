@@ -4,9 +4,16 @@ import { Menu, Button } from 'react-native-paper';
 
 const styles = StyleSheet.create({
 	menuContainer: {
+		display: 'flex',
+		justifyContent: 'space-between',
+
 		paddingVertical: 30,
 		flexDirection: 'row',
-		justifyContent: 'center',
+	},
+
+	button: {
+		display: 'flex',
+		justifyContent: 'space-around',
 	},
 });
 
@@ -28,7 +35,13 @@ const RepositorySortMenu = () => {
 			<Menu
 				visible={visible}
 				onDismiss={closeMenu}
-				anchor={<Button onPress={openMenu}>{sortOption}</Button>}
+				anchor={
+					<>
+						<Button onPress={openMenu} style={styles.button}>
+							{sortOption} <Text>&#9660;</Text>
+						</Button>
+					</>
+				}
 			>
 				<Menu.Item title='test' />
 			</Menu>
