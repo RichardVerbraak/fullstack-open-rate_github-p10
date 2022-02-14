@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, Pressable } from 'react-native';
 import React, { useState } from 'react';
 import { Menu, Button } from 'react-native-paper';
-import useRepositories from '../hooks/useRepositories';
 
 const styles = StyleSheet.create({
 	menuContainer: {
@@ -32,7 +31,7 @@ const RepositorySortMenu = ({ refetch }) => {
 
 	// Anchor should show the current menu option
 	return (
-		<View style={styles.menuContainer}>
+		<Pressable style={styles.menuContainer}>
 			<Menu
 				visible={visible}
 				onDismiss={closeMenu}
@@ -74,7 +73,7 @@ const RepositorySortMenu = ({ refetch }) => {
 					}}
 				/>
 			</Menu>
-		</View>
+		</Pressable>
 	);
 };
 
