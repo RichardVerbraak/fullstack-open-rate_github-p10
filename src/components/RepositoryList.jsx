@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useRepositories from '../hooks/useRepositories';
 import RepositoryListContainer from './RepositoryListContainer';
 
@@ -7,14 +7,15 @@ import RepositoryListContainer from './RepositoryListContainer';
 // tips for FlatList performance https://github.com/filipemerker/flatlist-performance-tips
 
 const RepositoryList = () => {
-	const { repositories, loading } = useRepositories({
-		orderBy: 'CREATED_AT',
-		orderDirection: 'ASC',
-	});
+	const [getRepositories, { data, loading }] = useRepositories();
 
-	return (
-		<RepositoryListContainer repositories={repositories} loading={loading} />
-	);
+	useEffect(() => {
+		getRepositories({
+			variables: { orderBy: 'CREATED_AT', orderDirection: 'ASC' },
+		});
+	}, []);
+
+	return <RepositoryListContainer data={data} loading={loading} />;
 };
 
 export default RepositoryList;

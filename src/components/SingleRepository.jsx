@@ -29,7 +29,7 @@ const SingleRepository = () => {
 	// 5. Return the updated server data
 
 	// Fetch repo data based on url
-	const { data, loading, error } = useQuery(GET_SINGLE_REPO, {
+	const { data, loading } = useQuery(GET_SINGLE_REPO, {
 		variables: { repositoryId: id },
 		fetchPolicy: 'cache-and-network',
 	});

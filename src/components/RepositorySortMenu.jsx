@@ -22,6 +22,8 @@ const RepositorySortMenu = () => {
 	const [sortOption, setSortOption] = useState('Latest repositories');
 	const [visible, setVisible] = useState(false);
 
+	const [getRepositories] = useRepositories();
+
 	const openMenu = () => {
 		setVisible(true);
 	};
@@ -50,14 +52,14 @@ const RepositorySortMenu = () => {
 					onPress={() => {
 						setSortOption('Latest repositories');
 						// Close menu after picking?
-						useRepositories({ orderBy: 'CREATED_AT', orderDirection: 'ASC' });
+						getRepositories({ orderBy: 'CREATED_AT', orderDirection: 'ASC' });
 					}}
 				/>
 				<Menu.Item
 					title='Highest rated repositories'
 					onPress={() => {
 						setSortOption('Highest rated repositories');
-						useRepositories({
+						getRepositories({
 							orderBy: 'RATING_AVERAGE',
 							orderDirection: 'DESC',
 						});
@@ -67,7 +69,7 @@ const RepositorySortMenu = () => {
 					title='Lowest rated repositories'
 					onPress={() => {
 						setSortOption('Lowest rated repositories');
-						useRepositories({
+						getRepositories({
 							orderBy: 'RATING_AVERAGE',
 							orderDirection: 'ASC',
 						});
