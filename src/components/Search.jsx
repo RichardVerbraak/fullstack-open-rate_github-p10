@@ -16,6 +16,8 @@ const Search = () => {
 			placeholder='Search repositories'
 			onChangeText={onChangeSearch}
 			value={searchQuery}
+			iconColor='grey'
+			inputStyle={{ padding: 15 }}
 		/>
 	);
 };

@@ -5,10 +5,8 @@ import { Menu, Button } from 'react-native-paper';
 const styles = StyleSheet.create({
 	menuContainer: {
 		display: 'flex',
-		justifyContent: 'space-between',
-
-		paddingVertical: 30,
 		flexDirection: 'row',
+		paddingVertical: 30,
 	},
 
 	button: {
