@@ -27,7 +27,6 @@ const RepositorySortMenu = ({ refetch }) => {
 		setVisible(false);
 	};
 
-	// Anchor should show the current menu option
 	return (
 		<Pressable style={styles.menuContainer}>
 			<Menu

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Searchbar } from 'react-native-paper';
 
-const Search = () => {
+const Search = ({ refetch }) => {
 	const [searchQuery, setSearchQuery] = useState('');
 
 	console.log(searchQuery);
 
 	const onChangeSearch = (query) => {
-		console.log(query);
 		setSearchQuery(query);
+		refetch({ searchKeyword: query });
 	};
 
 	return (

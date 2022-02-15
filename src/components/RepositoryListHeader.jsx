@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 const RepositoryListHeader = ({ refetch }) => {
 	return (
 		<View style={styles.headerContainer}>
-			<Search />
+			<Search refetch={refetch} />
 			<RepositorySortMenu refetch={refetch} />
 		</View>
 	);
