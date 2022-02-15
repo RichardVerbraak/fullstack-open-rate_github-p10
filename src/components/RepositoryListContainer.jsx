@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import RepositoryItem from './RepositoryItem';
 import RepositoryListHeader from './RepositoryListHeader';
-import RepositorySortMenu from './RepositorySortMenu';
 
 const styles = StyleSheet.create({
 	separator: {

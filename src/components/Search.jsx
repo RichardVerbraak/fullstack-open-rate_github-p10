@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { Searchbar } from 'react-native-paper';
+import { useDebounce } from 'use-debounce';
 
 const Search = ({ refetch }) => {
 	const [searchQuery, setSearchQuery] = useState('');
+	const [value] = useDebounce(searchQuery, 500);
 
-	console.log(searchQuery);
+	console.log(value);
 
 	const onChangeSearch = (query) => {
 		setSearchQuery(query);
-		refetch({ searchKeyword: query });
+		refetch({ searchKeyword: value });
 	};
 
 	return (
