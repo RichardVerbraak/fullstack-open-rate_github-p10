@@ -9,8 +9,17 @@ import RepositoryListContainer from './RepositoryListContainer';
 const RepositoryList = () => {
 	const { data, loading, refetch } = useRepositories();
 
+	const onEndReach = () => {
+		console.log('You have reached the end of the page');
+	};
+
 	return (
-		<RepositoryListContainer data={data} loading={loading} refetch={refetch} />
+		<RepositoryListContainer
+			data={data}
+			loading={loading}
+			refetch={refetch}
+			onEndReach={onEndReach}
+		/>
 	);
 };
 

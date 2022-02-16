@@ -1,7 +1,25 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { relayStylePagination } from '@apollo/client/utilities';
 
 import Constants from 'expo-constants';
+
+// A 'shortcut' to using Relay style pagination which is a one size fits all type of deal without using the read and merge functions from the cache
+// // Source on https://www.apollographql.com/docs/react/pagination/cursor-based/#relay-style-cursor-pagination
+
+// The read function will specify what happens when a field in the cache is being read
+// Merge function runs when a field is being written to the cache and you can specify how to store it in the cache
+// https://www.apollographql.com/docs/react/caching/cache-field-behavior/
+
+const cache = new InMemoryCache({
+	typePolicies: {
+		Query: {
+			fields: {
+				repositories: relayStylePagination(),
+			},
+		},
+	},
+});
 
 const httpLink = createHttpLink({
 	uri: Constants.manifest.extra.uri,
@@ -30,7 +48,7 @@ const createApolloClient = (authStorage) => {
 
 	return new ApolloClient({
 		link: authLink.concat(httpLink),
-		cache: new InMemoryCache(),
+		cache,
 	});
 };
 
