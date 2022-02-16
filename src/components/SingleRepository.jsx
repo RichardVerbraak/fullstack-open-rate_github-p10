@@ -59,6 +59,7 @@ const SingleRepository = () => {
 				<FlatList
 					data={reviews}
 					renderItem={({ item: { node } }) => {
+						// Destructure the node object from the edges array (edges is an array of objects, each node being the review)
 						return <RepositoryReview review={node} />;
 					}}
 					keyExtractor={({ node: { id } }) => id}

@@ -56,7 +56,10 @@ const RepositoryReview = ({ review }) => {
 
 				<View style={styles.textContainer}>
 					<View style={styles.textHeading}>
-						<Text fontWeight={'bold'}>{review.user.username}</Text>
+						{review.user && (
+							<Text fontWeight={'bold'}>{review.user.username}</Text>
+						)}
+
 						<Text color={'textSecondary'}>
 							{format(parseISO(review.createdAt), 'dd.MM.yyy')}
 						</Text>
