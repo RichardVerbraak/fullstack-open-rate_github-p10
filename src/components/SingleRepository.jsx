@@ -29,14 +29,29 @@ const SingleRepository = () => {
 	// 5. Return the updated server data
 
 	// Fetch repo data based on url
-	const { data, loading } = useQuery(GET_SINGLE_REPO, {
-		variables: { repositoryId: id },
+	const { data, loading, fetchMore } = useQuery(GET_SINGLE_REPO, {
+		variables: { repositoryId: id, first: 10 },
 		fetchPolicy: 'cache-and-network',
 	});
 
 	const item = data && data.repository;
 	const url = data && data.repository.url;
 	const reviews = data && data.repository.reviews.edges;
+
+	const handleFetchMore = () => {
+		const canFetchMore =
+			!loading && data && data.repository.reviews.pageInfo.hasNextPage;
+
+		if (!canFetchMore) {
+			return;
+		}
+
+		fetchMore({
+			variables: {
+				after: data.repository.reviews.pageInfo.endCursor,
+			},
+		});
+	};
 
 	return (
 		<View>
@@ -49,6 +64,8 @@ const SingleRepository = () => {
 					keyExtractor={({ node: { id } }) => id}
 					ItemSeparatorComponent={ItemSeparator}
 					ListHeaderComponent={() => <RepositoryItem item={item} url={url} />}
+					onEndReached={handleFetchMore}
+					onEndReachedThreshold={0.5}
 				/>
 			)}
 		</View>
