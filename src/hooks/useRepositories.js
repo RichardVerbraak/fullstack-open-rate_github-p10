@@ -9,7 +9,7 @@ const useRepositories = () => {
 
 	// First time the useQuery runs is with the default variables
 	// The refetch function thats passed down to the menu will fetch with other variables
-	const { data, loading, error, refetch } = useQuery(GET_REPOSITORIES, {
+	const { data, loading, refetch, fetchMore } = useQuery(GET_REPOSITORIES, {
 		fetchPolicy: 'cache-and-network',
 		variables: {
 			orderBy: 'CREATED_AT',
@@ -17,7 +17,30 @@ const useRepositories = () => {
 		},
 	});
 
-	return { data, loading, error, refetch };
+	//
+	const handleFetchMore = () => {
+		// Check if there are more pages
+		const canFetchMore = !loading && data?.repositories.pageInfo.hasNextPage;
+
+		// Don't run if there aren't anymore pages
+		if (!canFetchMore) {
+			return;
+		}
+
+		fetchMore({
+			variables: {
+				after: data.repositories.pageInfo.endCursor,
+				...variables,
+			},
+		});
+	};
+
+	return {
+		repositories: data?.repositories,
+		loading,
+		refetch,
+		fetchMore: handleFetchMore,
+	};
 };
 
 export default useRepositories;

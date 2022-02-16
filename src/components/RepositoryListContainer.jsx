@@ -12,9 +12,14 @@ const styles = StyleSheet.create({
 // Renders a view in between every item in the flatlist
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const RepositoryListContainer = ({ data, loading, refetch, onEndReach }) => {
+const RepositoryListContainer = ({
+	repositories,
+	loading,
+	refetch,
+	onEndReach,
+}) => {
 	const repositoryNodes =
-		!loading && data ? data.repositories.edges.map((edge) => edge.node) : [];
+		!loading && repositories ? repositories.edges.map((edge) => edge.node) : [];
 
 	return (
 		<FlatList
