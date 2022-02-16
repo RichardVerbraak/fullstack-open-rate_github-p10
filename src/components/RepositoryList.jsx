@@ -7,10 +7,11 @@ import RepositoryListContainer from './RepositoryListContainer';
 // tips for FlatList performance https://github.com/filipemerker/flatlist-performance-tips
 
 const RepositoryList = () => {
-	const { repositories, loading, refetch } = useRepositories();
+	const { repositories, loading, refetch, fetchMore } = useRepositories();
 
 	const onEndReach = () => {
 		console.log('You have reached the end of the page');
+		fetchMore();
 	};
 
 	return (

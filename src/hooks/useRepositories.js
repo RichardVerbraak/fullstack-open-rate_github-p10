@@ -14,13 +14,15 @@ const useRepositories = () => {
 		variables: {
 			orderBy: 'CREATED_AT',
 			orderDirection: 'ASC',
+			first: 8,
 		},
 	});
 
-	//
 	const handleFetchMore = () => {
-		// Check if there are more pages
+		// Check if there are more pages if loading is false (a check to see if fetching is already in progress)
 		const canFetchMore = !loading && data?.repositories.pageInfo.hasNextPage;
+
+		console.log('called fetch more');
 
 		// Don't run if there aren't anymore pages
 		if (!canFetchMore) {
