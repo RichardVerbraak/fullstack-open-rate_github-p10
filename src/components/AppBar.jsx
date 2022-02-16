@@ -51,6 +51,7 @@ const AppBar = () => {
 							url='/review'
 							text={styles.text}
 						/>
+						<AppBarTab title='My Reviews' url='/reviews' text={styles.text} />
 						<SignOut text={styles.text} />
 					</>
 				) : (
