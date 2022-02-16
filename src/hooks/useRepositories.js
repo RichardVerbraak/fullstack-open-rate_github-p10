@@ -22,8 +22,6 @@ const useRepositories = () => {
 		// Check if there are more pages if loading is false (a check to see if fetching is already in progress)
 		const canFetchMore = !loading && data?.repositories.pageInfo.hasNextPage;
 
-		console.log('called fetch more');
-
 		// Don't run if there aren't anymore pages
 		if (!canFetchMore) {
 			return;

@@ -6,8 +6,6 @@ const Search = ({ refetch }) => {
 	const [searchQuery, setSearchQuery] = useState('');
 	const [value] = useDebounce(searchQuery, 500);
 
-	console.log(value);
-
 	const onChangeSearch = (query) => {
 		setSearchQuery(query);
 		refetch({ searchKeyword: value });
