@@ -69,8 +69,8 @@ const GET_SINGLE_REPO = gql`
 							id
 							username
 						}
-						cursor
 					}
+					cursor
 				}
 				pageInfo {
 					endCursor
