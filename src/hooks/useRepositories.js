@@ -32,7 +32,6 @@ const useRepositories = () => {
 		fetchMore({
 			variables: {
 				after: data.repositories.pageInfo.endCursor,
-				...variables,
 			},
 		});
 	};
