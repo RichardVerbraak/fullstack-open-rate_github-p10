@@ -9,11 +9,13 @@ const GET_REPOSITORIES = gql`
 		$orderBy: AllRepositoriesOrderBy
 		$orderDirection: OrderDirection
 		$searchKeyword: String
+		$first: Int
 	) {
 		repositories(
 			orderBy: $orderBy
 			orderDirection: $orderDirection
 			searchKeyword: $searchKeyword
+			first: $first
 		) {
 			edges {
 				node {
@@ -28,6 +30,12 @@ const GET_REPOSITORIES = gql`
 					description
 					ownerAvatarUrl
 				}
+				cursor
+			}
+			pageInfo {
+				endCursor
+				startCursor
+				hasNextPage
 			}
 		}
 	}
