@@ -14,7 +14,7 @@ const useRepositories = () => {
 		variables: {
 			orderBy: 'CREATED_AT',
 			orderDirection: 'ASC',
-			first: 8,
+			first: 15,
 		},
 	});
 
