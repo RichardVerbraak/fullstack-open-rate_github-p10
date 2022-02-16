@@ -44,7 +44,7 @@ const GET_REPOSITORIES = gql`
 `;
 
 const GET_SINGLE_REPO = gql`
-	query getSingleRepo($repositoryId: ID!) {
+	query getSingleRepo($repositoryId: ID!, $first: Int, $after: String) {
 		repository(id: $repositoryId) {
 			id
 			url
@@ -58,7 +58,7 @@ const GET_SINGLE_REPO = gql`
 			language
 			description
 			ownerAvatarUrl
-			reviews {
+			reviews(first: $first, after: $after) {
 				edges {
 					node {
 						id
@@ -69,7 +69,13 @@ const GET_SINGLE_REPO = gql`
 							id
 							username
 						}
+						cursor
 					}
+				}
+				pageInfo {
+					endCursor
+					startCursor
+					hasNextPage
 				}
 			}
 		}
