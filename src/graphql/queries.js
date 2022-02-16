@@ -83,11 +83,22 @@ const GET_SINGLE_REPO = gql`
 `;
 
 // Query to check if the user is authenticated, will return null for both fields if there is no token
+// The includes directive is there to only query for the review data if asked for (when visiting the logged in users reviews page)
 const GET_USER = gql`
-	query getUser {
+	query getUser($includeReviews: Boolean = false) {
 		me {
 			id
 			username
+			reviews @include(if: $includeReviews) {
+				edges {
+					node {
+						id
+						text
+						rating
+						createdAt
+					}
+				}
+			}
 		}
 	}
 `;
