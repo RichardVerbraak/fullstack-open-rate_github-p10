@@ -27,6 +27,8 @@ const useRepositories = () => {
 			return;
 		}
 
+		// Fetch more data after the last item in the page (cursor points to the 'spot' the item is in the array)
+		// Cursor is also encoded in base64 containing the createdAt value and ID (think JWT token)
 		fetchMore({
 			variables: {
 				after: data.repositories.pageInfo.endCursor,
