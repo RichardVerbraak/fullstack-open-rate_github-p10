@@ -39,6 +39,8 @@ const SingleRepository = () => {
 	const reviews = data && data.repository.reviews.edges;
 
 	const handleFetchMore = () => {
+		console.log('reached end');
+
 		const canFetchMore =
 			!loading && data && data.repository.reviews.pageInfo.hasNextPage;
 
@@ -53,8 +55,9 @@ const SingleRepository = () => {
 		});
 	};
 
+	// Flex: 1 on the parent of the FlatList will fix the not scrolling to the bottom thing
 	return (
-		<View>
+		<View style={{ flex: 1 }}>
 			{!loading && (
 				<FlatList
 					data={reviews}

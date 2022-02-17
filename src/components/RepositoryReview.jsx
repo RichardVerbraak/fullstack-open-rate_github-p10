@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Pressable } from 'react-native';
 import { theme } from '../theme';
 import Text from './Text';
 
@@ -42,6 +42,41 @@ const styles = StyleSheet.create({
 	textHeading: {
 		paddingBottom: 5,
 	},
+
+	buttonContainer: {
+		display: 'flex',
+		flexDirection: 'row',
+
+		justifyContent: 'space-between',
+		alignContent: 'space-between',
+
+		paddingHorizontal: 20,
+		marginTop: 15,
+	},
+
+	viewButton: {
+		backgroundColor: '#4747ed',
+		borderRadius: 5,
+		padding: 15,
+
+		marginRight: 5,
+
+		flex: 1,
+	},
+
+	deleteButton: {
+		backgroundColor: '#e14d4d',
+		borderRadius: 5,
+		padding: 15,
+		flex: 1,
+
+		marginLeft: 5,
+	},
+
+	buttonText: {
+		textAlign: 'center',
+		color: '#fff',
+	},
 });
 
 const RepositoryReview = ({ review }) => {
@@ -66,6 +101,19 @@ const RepositoryReview = ({ review }) => {
 					</View>
 					<Text>{review.text}</Text>
 				</View>
+			</View>
+			<View style={styles.buttonContainer}>
+				<Pressable style={styles.viewButton}>
+					<Text fontWeight={'bold'} style={styles.buttonText}>
+						View Repository
+					</Text>
+				</Pressable>
+
+				<Pressable style={styles.deleteButton}>
+					<Text fontWeight={'bold'} style={styles.buttonText}>
+						Delete Review
+					</Text>
+				</Pressable>
 			</View>
 		</View>
 	);

@@ -24,8 +24,9 @@ const MyReviews = () => {
 
 	const reviews = data && data.me.reviews.edges;
 
+	// Flex: 1 on the parent of the FlatList will fix the not scrolling to the bottom thing
 	return (
-		<View>
+		<View style={{ flex: 1 }}>
 			<FlatList
 				data={reviews}
 				renderItem={({ item: { node } }) => {
