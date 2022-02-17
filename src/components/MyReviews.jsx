@@ -33,7 +33,9 @@ const MyReviews = () => {
 				renderItem={({ item: { node } }) => {
 					return <RepositoryReview review={node} user={user} />;
 				}}
-				keyExtractor={({ node: { id } }) => id}
+				keyExtractor={(item, index) => {
+					return index.toString();
+				}}
 				ItemSeparatorComponent={ItemSeparator}
 			/>
 		</View>

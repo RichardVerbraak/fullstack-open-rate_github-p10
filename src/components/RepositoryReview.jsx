@@ -76,7 +76,11 @@ const styles = StyleSheet.create({
 	},
 });
 
+// Component being reused in both a public (SingleRepository) and private (RepositoryReview) component
+// Hence the user being passed in to conditionally render
+
 const RepositoryReview = ({ review, user }) => {
+	console.log(review);
 	console.log(user);
 
 	return (
@@ -90,7 +94,9 @@ const RepositoryReview = ({ review, user }) => {
 
 				<View style={styles.textContainer}>
 					<View style={styles.textHeading}>
-						{review.user && (
+						{user ? (
+							<Text fontWeight={'bold'}>{review.repositoryId}</Text>
+						) : (
 							<Text fontWeight={'bold'}>{review.user.username}</Text>
 						)}
 

@@ -10,7 +10,6 @@ const RepositoryList = () => {
 	const { repositories, loading, refetch, fetchMore } = useRepositories();
 
 	const onEndReach = () => {
-		console.log('You have reached the end of the page');
 		fetchMore();
 	};
 

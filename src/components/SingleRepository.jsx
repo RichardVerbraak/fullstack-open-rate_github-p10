@@ -39,8 +39,6 @@ const SingleRepository = () => {
 	const reviews = data && data.repository.reviews.edges;
 
 	const handleFetchMore = () => {
-		console.log('reached end');
-
 		const canFetchMore =
 			!loading && data && data.repository.reviews.pageInfo.hasNextPage;
 
