@@ -23,6 +23,7 @@ const MyReviews = () => {
 	});
 
 	const reviews = data && data.me.reviews.edges;
+	const user = data && data.me;
 
 	// Flex: 1 on the parent of the FlatList will fix the not scrolling to the bottom thing
 	return (
@@ -30,7 +31,7 @@ const MyReviews = () => {
 			<FlatList
 				data={reviews}
 				renderItem={({ item: { node } }) => {
-					return <RepositoryReview review={node} />;
+					return <RepositoryReview review={node} user={user} />;
 				}}
 				keyExtractor={({ node: { id } }) => id}
 				ItemSeparatorComponent={ItemSeparator}

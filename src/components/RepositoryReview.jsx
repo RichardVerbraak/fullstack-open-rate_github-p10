@@ -47,9 +47,6 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		flexDirection: 'row',
 
-		justifyContent: 'space-between',
-		alignContent: 'space-between',
-
 		paddingHorizontal: 20,
 		marginTop: 15,
 	},
@@ -79,7 +76,9 @@ const styles = StyleSheet.create({
 	},
 });
 
-const RepositoryReview = ({ review }) => {
+const RepositoryReview = ({ review, user }) => {
+	console.log(user);
+
 	return (
 		<View style={styles.itemContainer}>
 			<View style={styles.contentContainer}>
@@ -102,19 +101,22 @@ const RepositoryReview = ({ review }) => {
 					<Text>{review.text}</Text>
 				</View>
 			</View>
-			<View style={styles.buttonContainer}>
-				<Pressable style={styles.viewButton}>
-					<Text fontWeight={'bold'} style={styles.buttonText}>
-						View Repository
-					</Text>
-				</Pressable>
 
-				<Pressable style={styles.deleteButton}>
-					<Text fontWeight={'bold'} style={styles.buttonText}>
-						Delete Review
-					</Text>
-				</Pressable>
-			</View>
+			{user && (
+				<View style={styles.buttonContainer}>
+					<Pressable style={styles.viewButton}>
+						<Text fontWeight={'bold'} style={styles.buttonText}>
+							View Repository
+						</Text>
+					</Pressable>
+
+					<Pressable style={styles.deleteButton}>
+						<Text fontWeight={'bold'} style={styles.buttonText}>
+							Delete Review
+						</Text>
+					</Pressable>
+				</View>
+			)}
 		</View>
 	);
 };
