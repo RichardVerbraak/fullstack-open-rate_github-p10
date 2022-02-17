@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import { GET_USER } from '../graphql/queries';
 
 import RepositoryReview from './RepositoryReview';
+import { useNavigate } from 'react-router-native';
 
 const styles = StyleSheet.create({
 	separator: {
@@ -21,6 +22,11 @@ const MyReviews = () => {
 			includeReviews: true,
 		},
 	});
+	const navigate = useNavigate();
+
+	const navigateToRepo = (url) => {
+		navigate(`/${url}`);
+	};
 
 	const reviews = data && data.me.reviews.edges;
 	const user = data && data.me;
@@ -31,7 +37,13 @@ const MyReviews = () => {
 			<FlatList
 				data={reviews}
 				renderItem={({ item: { node } }) => {
-					return <RepositoryReview review={node} user={user} />;
+					return (
+						<RepositoryReview
+							review={node}
+							user={user}
+							navigate={navigateToRepo}
+						/>
+					);
 				}}
 				keyExtractor={(item, index) => {
 					return index.toString();
