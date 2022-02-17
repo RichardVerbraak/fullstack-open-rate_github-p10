@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 });
 
 const ItemSeparator = () => {
-	return <View styles={styles.separator} />;
+	return <View style={styles.separator} />;
 };
 
 const MyReviews = () => {
