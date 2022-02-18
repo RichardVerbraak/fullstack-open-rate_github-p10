@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
 // Component being reused in both a public (SingleRepository) and private (RepositoryReview) component
 // Hence the user being passed in to conditionally render
 
-const RepositoryReview = ({ review, user, navigate }) => {
+const RepositoryReview = ({ review, user, navigate, deleteReview }) => {
 	return (
 		<View style={styles.itemContainer}>
 			<View style={styles.contentContainer}>
@@ -118,7 +118,12 @@ const RepositoryReview = ({ review, user, navigate }) => {
 						</Text>
 					</Pressable>
 
-					<Pressable style={styles.deleteButton}>
+					<Pressable
+						onPress={() => {
+							deleteReview(review.id);
+						}}
+						style={styles.deleteButton}
+					>
 						<Text fontWeight={'bold'} style={styles.buttonText}>
 							Delete Review
 						</Text>

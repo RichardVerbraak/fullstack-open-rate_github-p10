@@ -8,6 +8,7 @@ import { object, string, number } from 'yup';
 import { formStyles } from '../../../theme';
 import { useMutation } from '@apollo/client';
 import { CREATE_REVIEW } from '../../../graphql/mutations';
+import { GET_USER } from '../../../graphql/queries';
 import { useNavigate } from 'react-router-native';
 
 const styles = StyleSheet.create({
@@ -43,7 +44,9 @@ const validationSchema = object({
 });
 
 const ReviewForm = () => {
-	const [createReview] = useMutation(CREATE_REVIEW);
+	const [createReview] = useMutation(CREATE_REVIEW, {
+		refetchQueries: [{ query: GET_USER }],
+	});
 	const navigate = useNavigate();
 
 	const onSubmit = async (values) => {

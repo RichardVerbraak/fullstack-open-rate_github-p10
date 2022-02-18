@@ -1,10 +1,11 @@
 import { View, StyleSheet, FlatList } from 'react-native';
 import React from 'react';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { GET_USER } from '../graphql/queries';
 
 import RepositoryReview from './RepositoryReview';
 import { useNavigate } from 'react-router-native';
+import { DELETE_REVIEW } from '../graphql/mutations';
 
 const styles = StyleSheet.create({
 	separator: {
@@ -17,12 +18,27 @@ const ItemSeparator = () => {
 };
 
 const MyReviews = () => {
-	const { data, loading } = useQuery(GET_USER, {
+	const navigate = useNavigate();
+
+	const { data, loading, refetch } = useQuery(GET_USER, {
 		variables: {
 			includeReviews: true,
 		},
 	});
-	const navigate = useNavigate();
+
+	const [deleteReview] = useMutation(DELETE_REVIEW);
+
+	const handleDelete = (id) => {
+		deleteReview({
+			variables: {
+				deleteReviewId: id,
+			},
+		});
+
+		refetch({
+			includeReviews: true,
+		});
+	};
 
 	const navigateToRepo = (url) => {
 		navigate(`/${url}`);
@@ -42,6 +58,7 @@ const MyReviews = () => {
 							review={node}
 							user={user}
 							navigate={navigateToRepo}
+							deleteReview={handleDelete}
 						/>
 					);
 				}}
