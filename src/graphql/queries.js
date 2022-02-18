@@ -92,6 +92,7 @@ const GET_USER = gql`
 			reviews @include(if: $includeReviews) {
 				edges {
 					node {
+						id
 						repositoryId
 						text
 						rating
