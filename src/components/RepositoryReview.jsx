@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Pressable } from 'react-native';
+import { StyleSheet, View, Pressable, Alert } from 'react-native';
 import { theme } from '../theme';
 import Text from './Text';
 
@@ -120,7 +120,25 @@ const RepositoryReview = ({ review, user, navigate, deleteReview }) => {
 
 					<Pressable
 						onPress={() => {
-							deleteReview(review.id);
+							Alert.alert(
+								'Delete review',
+								'Are you sure you want to delete this review?',
+								[
+									{
+										text: 'Cancel',
+										onPress: () => {
+											console.log('cancelled');
+										},
+										style: 'cancel',
+									},
+									{
+										text: 'Delete',
+										onPress: () => {
+											deleteReview(review.id);
+										},
+									},
+								]
+							);
 						}}
 						style={styles.deleteButton}
 					>

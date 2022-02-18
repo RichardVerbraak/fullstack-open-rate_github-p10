@@ -28,16 +28,14 @@ const MyReviews = () => {
 
 	const [deleteReview] = useMutation(DELETE_REVIEW);
 
-	const handleDelete = (id) => {
-		deleteReview({
+	const handleDelete = async (id) => {
+		await deleteReview({
 			variables: {
 				deleteReviewId: id,
 			},
 		});
 
-		refetch({
-			includeReviews: true,
-		});
+		refetch();
 	};
 
 	const navigateToRepo = (url) => {

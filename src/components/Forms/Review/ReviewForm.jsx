@@ -47,6 +47,7 @@ const ReviewForm = () => {
 	const [createReview] = useMutation(CREATE_REVIEW, {
 		refetchQueries: [{ query: GET_USER }],
 	});
+
 	const navigate = useNavigate();
 
 	const onSubmit = async (values) => {
